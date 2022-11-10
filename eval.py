@@ -215,7 +215,7 @@ def _eval_once(saver, summary_writer, argmaxs, answer_ids, argmaxs2, answer_ids2
             nm.append(name_list[agmx])
             allpred.append(F1_prob[agmx])
             if (int(answer_list2[agmx][int(AS_P0[agmx])])==1) and(int(answer_list2[agmx][int(AS_P1[agmx])])==1):
-              ab.append('both')
+              ab.append('oth')
             elif (int(answer_list2[agmx][int(AS_P0[agmx])])==1):
               ab.append('Main')
             elif (int(answer_list2[agmx][int(AS_P1[agmx])])==1):
