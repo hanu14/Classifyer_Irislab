@@ -1,6 +1,7 @@
 # Classifyer_Irislab
 ```
-git clone https://github.com/hanu14/Classifyer_Irislab
+git clone https://github.com/hanu14/Classifyer_Irislab.git
+
 cd Classifyer_Irislab
 conda env create -f environment.yaml
 conda activate ClassifyNet
