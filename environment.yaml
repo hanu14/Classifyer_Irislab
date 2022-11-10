@@ -21,6 +21,7 @@ dependencies:
     - networkx==1.11
     - numpy==1.14.0
     - olefile==0.44
+    - openpyxl==2.6.4
     - packaging==16.8
     - pandas==0.24.2
     - pathlib2==2.2.1
