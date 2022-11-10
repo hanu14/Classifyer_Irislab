@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 
 flags = tf.app.flags
 
-flags.DEFINE_integer("num_gpus", 2, "Number of gpus to use")
+flags.DEFINE_integer("num_gpus", 1, "Number of gpus to use")
 flags.DEFINE_string('train_dir', './checkpoints',
                            """Directory where to write event logs """
                            """and checkpoint.""")
