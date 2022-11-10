@@ -278,7 +278,7 @@ def enqueue(eval_data):
     context_mask.set_shape([FLAGS.batch_size, FLAGS.max_context_length])
     caption_mask.set_shape([FLAGS.batch_size, FLAGS.max_output_length])
     ##
-    print(batch_filename)
+    #print(batch_filename)
     #batch_filename.set_shape([FLAGS.batch_size,1])
     # Ensure that the random shuffling has good mixing properties.
     min_fraction_of_examples_in_queue = 0.01
