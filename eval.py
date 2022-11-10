@@ -23,16 +23,16 @@ flags.DEFINE_string('eval_data', 'test',
 flags.DEFINE_string("train_dir", "./checkpoints", "checkpoint directory [checkpoints]")
 flags.DEFINE_string(
     "vocab_fname",
-    "./data_yfcc/hashtag_dataset/60000.vocab",
+    "./data_yfcc/hashtag_dataset/40000.vocab",
     "Vocabulary file for evaluation"
 )
-flags.DEFINE_integer("num_gpus", 2, "Number of gpus to use")
+flags.DEFINE_integer("num_gpus", 1, "Number of gpus to use")
 flags.DEFINE_integer('eval_interval_secs', 60 * 1,
                             """How often to run the eval.""")
 flags.DEFINE_boolean('run_once', False,
                          """Whether to run eval only once.""")
 
-flags.DEFINE_float("hold", 0.75, "Threshold")
+flags.DEFINE_float("hold", 0.5, "Threshold")
 
 flags.DEFINE_integer('DF_num', 0, " ")
 
