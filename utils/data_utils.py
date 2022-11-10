@@ -30,7 +30,7 @@ flags.DEFINE_integer("max_output_length", 16,
 flags.DEFINE_integer('batch_size', 200,
     """Number of examples to process in a batch."""
 )
-flags.DEFINE_integer('vocab_size', 60000,
+flags.DEFINE_integer('vocab_size', 40000,
     """Number of vocab."""
 )
 flags.DEFINE_integer('word_emb_dim', 512,
