@@ -1,0 +1,1 @@
+python -m eval --num_gpus 1 --batch_size 500 --data_dir ./data_yfcc/hashtag_dataset --run_once True
