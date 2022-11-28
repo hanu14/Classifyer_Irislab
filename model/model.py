@@ -140,7 +140,7 @@ class CSMN(object):
 
   def __init__(self, inputs, config, name="CSMN", is_training=True):
     (conv_cnn, context_largest_length, output_largest_length,
-        context, caption, answer,answer_new, context_mask, output_mask) = inputs
+        context, caption, answer,answer_new, context_mask, output_mask,name_list) = inputs
     context_largest_length = tf.reduce_max(context_largest_length)
     output_largest_length = tf.reduce_max(output_largest_length)
     # Set config's variables as models' variables
