@@ -21,10 +21,10 @@ DATA_ROOT_PATH = '../data_yfcc'
 
 # For dataset
 HASHTAG_TRAIN_JSON_FNAME = os.path.join(
-    DATA_ROOT_PATH, 'json', 'yfcc-hashtag-train.json'
+    DATA_ROOT_PATH, 'json', 'hashtag-train.json'
 )
 HASHTAG_TEST_JSON_FNAME = os.path.join(
-    DATA_ROOT_PATH, 'json', 'yfcc-hashtag-test.json'
+    DATA_ROOT_PATH, 'json', 'hashtag-test.json'
 )
 
 
