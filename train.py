@@ -104,7 +104,7 @@ def train():
       num_examples_per_epoch, tower_img_embedding, tower_context_length, \
           tower_caption_length, tower_context_id, tower_caption_id, \
           tower_answer_id, tower_answer_new,tower_context_mask, \
-          tower_caption_mask = enqueue(False)
+          tower_caption_mask, tower_name_list = enqueue(False)
 
       # Calculate the learning rate schedule.
       num_batches_per_epoch = (num_examples_per_epoch /
@@ -141,7 +141,8 @@ def train():
                   tower_answer_id[i],
                   tower_answer_new[i],
                   tower_context_mask[i],
-                  tower_caption_mask[i]
+                  tower_caption_mask[i],
+                  tower_name_list[i]
               ]
               loss, loss_new, Wf2, bf2 = _tower_loss(inputs, scope)
 
@@ -308,3 +309,4 @@ def main(argv=None):
 
 if __name__ == "__main__":
     tf.app.run()
+
