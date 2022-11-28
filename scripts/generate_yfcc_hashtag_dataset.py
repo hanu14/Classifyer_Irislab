@@ -178,6 +178,46 @@ def tokenize_all(train_json, test_json):
 
   return token_counter, train_tokens, test_tokens
 
+def tokenize_category(train_json, test_json):
+  """
+  Tokenize sentences in raw dataset
+
+  Args:
+    train_json, test_json: raw json object
+    key: 'caption' or 'tags'
+  """
+  train_tokens = {}
+  test_tokens = {}
+  
+  # Train data
+  for user_id, posts in tqdm(train_json.items(), ncols=70, desc="train data"):
+    train_tokens[user_id] = {}
+    for post in posts:
+      tags = post['category']
+      post_id = post['page url'].split('/')[-2]
+      post_tokens = str(tags)
+      post_tokens =post_tokens.replace(" ","")
+      post_tokens =post_tokens.strip("[""]")
+      post_tokens = post_tokens.replace(",","")
+      train_tokens[user_id][post_id] = post_tokens
+      
+
+  # Test data
+  for user_id, posts in tqdm(test_json.items(), ncols=70, desc="test data"):
+    test_tokens[user_id] = {}
+    for post in posts:
+      tags = post['category']
+      post_id = post['page url'].split('/')[-2]
+      post_tokens = str(tags)
+      post_tokens =post_tokens.replace(" ","")
+      post_tokens =post_tokens.strip("[""]")
+      post_tokens = post_tokens.replace(",","")
+      print("test_toke, ", post_tokens)
+      test_tokens[user_id][post_id] = post_tokens
+
+
+  return train_tokens, test_tokens
+
 
 def get_tfidf_words(train_tokens, test_tokens, vocab, rev_vocab):
   colorlog.info("Get tfidf words")
@@ -248,7 +288,7 @@ def save_data(train_data, test_data, output_path, rev_vocab, remove_unk=False):
     numpyfname,contextlength,captionlength,contexttoken1_contexttoken2,wordtoken1_wordtoken2
     e.g. 12345.npy,4,3,445_24_445_232,134_466_234
   """
-  def _save_data(all_tokens, all_tfidf, fname, remove_unk=True):
+  def _save_data(all_tokens, all_tfidf, all_category, fname, remove_unk=True):
     all_strings = []
     for user_id, posts in all_tokens.items():
       context_tokenids = map(
@@ -269,10 +309,11 @@ def save_data(train_data, test_data, output_path, rev_vocab, remove_unk=False):
         caption_length = str(len(caption_tokenids))
         caption_string = '_'.join(caption_tokenids)
         numpy_string = '%s_%s.npy' % (user_id, post_id)
+        category = all_category[user_id][post_id]
 
         all_string = ','.join([
             numpy_string, context_length, caption_length,
-            context_string, caption_string
+            context_string, caption_string, category
         ])
         all_strings.append((all_string + '\n', len(caption_tokenids)))
 
@@ -284,10 +325,10 @@ def save_data(train_data, test_data, output_path, rev_vocab, remove_unk=False):
         f.write(all_string[0])
 
   _save_data(
-      train_data[0], train_data[1], os.path.join(output_path, "train.txt")
+      train_data[0], train_data[1],train_data[2], os.path.join(output_path, "train.txt")
   )
   _save_data(
-      test_data[0], test_data[1], os.path.join(output_path, "test.txt"),
+      test_data[0], test_data[1], test_data[2], os.path.join(output_path, "test.txt"),
       False
   )
 
@@ -314,6 +355,11 @@ def main():
           hashtag_train_json,
           hashtag_test_json
       )
+  hashtag_train_cate, hashtag_test_cate = tokenize_category(
+          hashtag_train_json,
+          hashtag_test_json
+      )
+
   with open('hashcounter.txt', 'w') as f:
     for key, value in hashtag_counter.most_common():
       f.write("%s : %d\n" % (key, value))
@@ -334,8 +380,8 @@ def main():
 
   # Save data
   save_data(
-      (hashtag_train_tokens, hashtag_train_tfidf_tokens),
-      (hashtag_test_tokens, hashtag_test_tfidf_tokens),
+      (hashtag_train_tokens, hashtag_train_tfidf_tokens, hashtag_train_cate),
+      (hashtag_test_tokens, hashtag_test_tfidf_tokens, hashtag_test_cate),
       HASHTAG_OUTPUT_PATH,
       hashtag_rev_vocab,
       True
