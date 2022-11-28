@@ -212,7 +212,7 @@ def tokenize_category(train_json, test_json):
       post_tokens =post_tokens.replace(" ","")
       post_tokens =post_tokens.strip("[""]")
       post_tokens = post_tokens.replace(",","")
-      print("test_toke, ", post_tokens)
+      # print("test_toke, ", post_tokens)
       test_tokens[user_id][post_id] = post_tokens
 
 
