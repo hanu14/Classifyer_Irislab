@@ -4,4 +4,4 @@
 
 [[Download images (YFCC100M-20Class)]](https://drive.google.com/file/d/1TJ7OvulsYhH1sZ6UPb36swmYKwAYCWca/view?usp=sharing)
 
-[[Download pretrained model]]()
+[[Download pretrained model]](https://drive.google.com/file/d/1dWidr0FJ2aDwl7K_lZURW9WN_2H9IopI/view?usp=sharing)
