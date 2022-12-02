@@ -3,3 +3,5 @@
 [[Download json (YFCC100M-20Class)]](https://drive.google.com/file/d/1ErEq9Q4ypEvGKO_fUDW5S_nxfi_KRS63/view?usp=sharing)
 
 [[Download images (YFCC100M-20Class)]](https://drive.google.com/file/d/1TJ7OvulsYhH1sZ6UPb36swmYKwAYCWca/view?usp=sharing)
+
+[[Download pretrained model]]()
